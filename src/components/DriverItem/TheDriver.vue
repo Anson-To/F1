@@ -35,12 +35,24 @@ export default {
         setSelectTab(cmp)
         {
             this.selectedTab = cmp;
+        },
+        addDriver(name,team)
+        {
+            const item = 
+            {
+                id:new Date().toISOString(),
+                name:name,
+                team:team
+            }
+            this.lists.push(item);
+            this.selectedTab = "driver-list";
         }
     },
     provide()
     {
         return {
-            list:this.lists
+            list:this.lists,
+            addDriver:this.addDriver
         };
     }
 }
