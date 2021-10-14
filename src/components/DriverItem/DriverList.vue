@@ -12,7 +12,8 @@
 <script>
 import  DriverItem from './DriverListItem.vue'
 export default {
-    props:["list"],
+    // props:["list"],
+    inject: ["list"],
     components:
     {
         DriverItem,
