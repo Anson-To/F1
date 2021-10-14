@@ -1,18 +1,21 @@
 <template>
     <!-- <header>F1 drivers</header> -->
     <the-header></the-header>
-    <driver-list :list="lists"></driver-list>
+    <the-driver></the-driver>
+    <!-- <driver-list :list="lists"></driver-list> -->
 </template>
 
 <script>
 // Local components
 import  TheHeader from './components/layouts/TheHeader.vue'
-import  DriverList from './components/DriverItem/DriverList.vue'
+// import  DriverList from './components/DriverItem/DriverList.vue'
+import  TheDriver from './components/DriverItem/TheDriver.vue';
 // import  DriverItem from './components/DriverItem/DriverListItem.vue'
 export default {
     components:{
         TheHeader,
-        DriverList,
+        // DriverList,
+        TheDriver,
     },
     data()
     {
@@ -28,7 +31,7 @@ export default {
                     name:"Valtteri",
                     team:"Benz"
                 },
-                ]
+            ]
         };
     }
 }
