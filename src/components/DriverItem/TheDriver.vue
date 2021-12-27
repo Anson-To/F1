@@ -3,7 +3,9 @@
         <base-button @click="setSelectTab('add-driver')">ADD DRIVER</base-button>
         <base-button @click="setSelectTab('driver-list')">DRIVER LIST</base-button>
     </base-card>
-    <component :is="selectedTab"></component>
+    <keep-alive>
+        <component :is="selectedTab"></component>
+    </keep-alive>
 </template>
 
 <script>
