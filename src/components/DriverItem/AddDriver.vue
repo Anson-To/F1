@@ -1,13 +1,22 @@
 <template>
+    <base-dialog v-if="inputInvalid" title="Invalid Input" >
+      <template v-slot:default>
+        <p>Empty Data has been inputted</p>
+      </template>
+      <template v-slot:actions>
+        <base-button @click="closeError">Close Error</base-button>
+      </template>
+    </base-dialog>
+    
     <base-card>
         <h2>Add new driver</h2>
         <form @submit.prevent="submitForm">
             <div class="form-control">
-                <input placeholder="name" type="text" id="name" name="name" ref="nameInput" required/>
+                <input placeholder="name" type="text" id="name" name="name" ref="nameInput" />
             </div>
 
             <div class="form-control">
-                <input placeholder="team" type="text" id="team" name="team" ref="teamInput" required/>
+                <input placeholder="team" type="text" id="team" name="team" ref="teamInput" />
             </div>
 
             <div class="form-control">
@@ -21,20 +30,41 @@
 <script>
 import BaseButton from '../UI/BaseButton.vue'
 import BaseCard from '../UI/BaseCard.vue'
+import BaseDialog from '../UI/BaseDialog.vue';
 
 export default {
-  components: { BaseCard, BaseButton },
+  components: { BaseCard, BaseButton, BaseDialog },
   inject:["addDriver"],
+  data(){
+    return {
+      inputInvalid:false
+    };
+  },
   methods:
   {
       submitForm()
       {
-          this.addDriver(this.$refs.nameInput.value,this.$refs.teamInput.value);
+          if(this.$refs.nameInput.value.trim() === '' || this.$refs.teamInput.value.trim() === '')
+          {
+              this.inputInvalid = true;
+              return;
+              //this.addDriver(this.$refs.nameInput.value,this.$refs.teamInput.value);
+          }
+          else 
+          {
+            //   show error message
+            this.addDriver(this.$refs.nameInput.value,this.$refs.teamInput.value);
+           // this.inputInvalid = true;
+          }
         //   const object = {
         //       name:this.$refs.nameInput.value,
         //       team:this.$refs.teamInput.value
         //   }
         //   this.$emit("new-driver",object);
+      },
+      closeError()
+      {
+        this.inputInvalid = false;
       }
   }
     
