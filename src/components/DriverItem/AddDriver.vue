@@ -1,13 +1,15 @@
 <template>
-    <base-dialog v-if="inputInvalid" title="Invalid Input" @close="closeError" >
-      <template v-slot:default>
-        <p>Empty Data has been inputted</p>
-      </template>
-      <template v-slot:actions>
-        <base-button @click="closeError">Close Error</base-button>
-      </template>
-    </base-dialog>
-    
+    <!-- Add teleport to improve HTML structure -->
+    <teleport to="body">
+      <base-dialog v-if="inputInvalid" title="Invalid Input" @close="closeError" >
+        <template v-slot:default>
+          <p>Empty Data has been inputted</p>
+        </template>
+        <template v-slot:actions>
+          <base-button @click="closeError">Close Error</base-button>
+        </template>
+      </base-dialog>
+    </teleport>
     <base-card>
         <h2>Add new driver</h2>
         <form @submit.prevent="submitForm">
