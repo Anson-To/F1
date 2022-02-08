@@ -2,7 +2,8 @@
     <ul>
         <driver-item 
         v-for="item in list" 
-        :key="item.id" 
+        :key="item.id"
+        :id="item.id" 
         :name="item.name" 
         :team="item.team">
         </driver-item>

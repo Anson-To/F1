@@ -4,13 +4,14 @@
         <!-- <slot> -->
           <h2>{{name}}</h2>
           <p>{{team}}</p>
-          <base-button>Delete</base-button>
+          <base-button @click="removeDriver(id)">Delete</base-button>
         </base-card>
     </li>
 </template>
 <script>
 export default{
-    props:['name',"team"]
+    props:['id','name',"team"],
+    inject:['removeDriver']
 }
 </script>
 

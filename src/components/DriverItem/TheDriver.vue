@@ -48,13 +48,20 @@ export default {
             }
             this.lists.push(item);
             this.selectedTab = "driver-list";
+        },
+        removeDriver(id)
+        {
+            const removeIndex = this.lists.findIndex(res => res.id== id); 
+            this.lists.splice(removeIndex,1);
+            //console.log("Remove Driver",id);
         }
     },
     provide()
     {
         return {
             list:this.lists,
-            addDriver:this.addDriver
+            addDriver:this.addDriver,
+            removeDriver:this.removeDriver
         };
     }
 }
